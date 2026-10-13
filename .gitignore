@@ -1,0 +1,99 @@
+# ===== 隐私与密钥（最高优先级，绝对不要提交）=====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+private/
+resume/
+简历*
+*.pdf
+*.doc
+*.docx
+secrets/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib60/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-wheel-metadata/
+.eggs/
+
+# ===== 虚拟环境 =====
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+# ===== 测试 / 覆盖率 =====
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# ===== 类型检查 / 格式化 / 缓存 =====
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+.pytype/
+.cache/
+*.log
+
+# ===== uv =====
+uv.lock.bak
+
+# ===== IDE / 编辑器 =====
+.idea/
+.vscode/
+!.vscode/settings.json.example
+*.swp
+*.swo
+*~
+.spyderproject
+.spyproject
+.abstrakt
+
+# ===== 操作系统 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== Docker / 数据库本地数据（数据卷持久化在 Docker 里，这里不存）=====
+mysql_data/
+redis_data/
+docker/volumes/
+
+# ===== 本地临时文件 =====
+tmp/
+temp/
+*.tmp
+*.bak

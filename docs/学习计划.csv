@@ -1,0 +1,293 @@
+﻿日期,星期,周次,当日学习内容,学习资料（视频/文档 + 具体集数或章节）,当日编码任务,力扣题目（2 道）,八股题,验收标准
+2026-10-14,周三,第 0 周,开发环境搭建（一）：确认 Windows / CPU 虚拟化 / 磁盘空间，记录各工具版本；配置 Git 全局用户信息与 SSH 密钥；理解「本地仓库 → 远程仓库」的基本流程,"① 廖雪峰 Git 教程（廖雪峰）「Git 简介」「创建版本库」「添加远程库」3 节，约 40 分钟  https://liaoxuefeng.com/books/git/introduction/index.html
+② B 站搜索：Git 入门教程 尚硅谷（未验证）—— 看「Git 简介与安装」「Git 基本操作」约 5 集，约 60 分钟
+③ GitHub 官方中文文档「关于 SSH」1 篇，约 15 分钟  https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/about-ssh","1. 在 D:\code\fitness-ai 执行 git init，确认默认分支是 main
+2. 生成并查看 ~/.ssh/id_ed25519.pub，把公钥添加到 GitHub
+3. 用 ssh -T git@github.com 验证连接，看到 successfully authenticated 即成功",1. 两数之和；49. 字母异位词分组,"1. 请做一个 1 分钟的自我介绍，重点讲讲你为什么想做 Python 后端和大模型应用开发。
+2. 你了解 Python 后端开发日常实习一般做什么工作吗？说说你的理解。
+3. 你平时用 GitHub 吗？说说 Git 和 GitHub 的区别，以及你打算怎么维护自己的主页。",环境检查报告写进 docs/环境检查报告.md；SSH 验证通过
+2026-10-15,周四,第 0 周,开发环境搭建（二）：Docker 与 WSL2 基础概念，理解「容器 vs 虚拟机」；用 docker compose 启动 MySQL 8.0 与 Redis 7，理解端口映射与数据卷持久化,"① B 站搜索：Docker 入门教程 尚硅谷（未验证）—— 看「Docker 为什么出现」「Docker 的安装」「Docker 的基本组成」约 6 集，约 70 分钟
+② Docker 官方文档「Get started」1 篇，约 20 分钟  https://docs.docker.com/get-started/
+③ MySQL 官方「Tutorial」1 节，约 20 分钟  https://dev.mysql.com/doc/refman/8.0/en/tutorial.html","1. 写 docker-compose.yml，定义 mysql:8.0（端口 3306）与 redis:7（端口 6379），密码从 .env 读取
+2. 写 docker/init/init.sql 建 fitness 库
+3. docker compose up -d 启动，用 docker compose ps 确认两个容器都是 healthy",128. 最长连续序列；283. 移动零,"1. 你觉得一份合格的校招简历应该包含哪些部分？技术栈应该怎么写才不会被面试官追问到崩？
+2. 简历上的项目经历你准备写几段？每段应该写清楚哪些内容？
+3. 你觉得自己目前最大的技术短板是什么？打算怎么补？",docker compose ps 显示 mysql 与 redis 均 healthy；用客户端能连上 3306 和 6379
+2026-10-16,周五,第 0 周,GitHub 仓库整理（一）：理解仓库、README、.gitignore 的作用；学会用 git status 在提交前做「隐私自检」,"① 廖雪峰 Git 教程「忽略特殊文件」「使用 GitHub」2 节，约 30 分钟
+② GitHub 官方文档「关于 README」1 篇，约 15 分钟  https://docs.github.com/zh/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes","1. 创建公开仓库 fitness-ai，用 SSH 方式关联并推送首次提交
+2. 写 README.md：项目简介 + 技术栈 + 开发路线图
+3. 写 .gitignore（必须包含 .env、.venv、*.pdf、private/）与 .env.example
+4. 提交前运行 git status，确认没有 .env、没有简历文件",136. 只出现一次的数字；169. 多数元素,"1. 项目经历中“我负责了什么”和“我解决了什么问题”哪个更重要？为什么？
+2. 如果面试官问你项目里最难的一个技术点是什么，你准备怎么回答？
+3. 你了解什么是 STAR 法则吗？用它讲一个你参与过的课程项目。",GitHub 上能看到 fitness-ai 仓库；git status 干净；仓库里搜不到任何密码或手机号
+2026-10-17,周六,第 0 周,GitHub 仓库整理（二）：把旧项目整理上传；学会检查代码里的敏感信息（API Key、密码、手机号）,"① 廖雪峰 Git 教程「分支管理」章节前 3 节，约 40 分钟
+② B 站搜索：Git 分支管理 教程（未验证）—— 约 4 集，约 50 分钟","1. 给 AI 问答网页、社团/图书馆管理系统、ETF 量化回测各写一个 README
+2. 逐个检查代码：搜 api_key / password / secret / token，有硬编码的立刻改成从 .env 读取
+3. 三个旧项目分别建仓库并推送",448. 找到所有数组中消失的数字；560. 和为 K 的子数组,"1. Git 的 commit、push、pull 分别做了什么？它们和远程仓库是什么关系？
+2. 谈谈你对分支的理解，为什么开发新功能一般要新建分支而不是直接在 main 上改？
+3. 代码里出现冲突（conflict）是怎么产生的？你一般怎么解决？",三个旧项目都出现在 github.com/chensiyuan451-cloud 的仓库列表里，每个都有 README
+2026-10-18,周日,第 0 周,【第 0 周复盘】GitHub 个人主页 README（仓库名与用户名同名）；置顶项目；本周投递与面试情况复盘,"① GitHub 官方文档「管理个人资料 README」1 篇，约 20 分钟  https://docs.github.com/zh/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme
+② 小林 coding「图解网络」开篇，约 30 分钟  https://xiaolincoding.com/","1. 创建与用户名同名的仓库 chensiyuan451-cloud，写个人主页 README（自我介绍 + 技术栈 + 项目链接）
+2. 把 fitness-ai 和 AI 问答网页设为置顶（Pin）
+3. 复盘：本周 GitHub 提交天数、投递份数、面试数、被问倒的问题，写进 docs/周复盘.md",11. 盛最多水的容器；15. 三数之和,"1. 什么是 RESTful 风格的接口？用一句话描述一个查询用户接口应该长什么样。
+2. 浏览器从输入一个网址到看到页面，中间大致经历了哪些步骤？
+3. 你了解 HTTP 状态码吗？200、301、404、500 分别代表什么？",打开 github.com/chensiyuan451-cloud 能看到个人主页 README 和 2 个置顶项目；周复盘已写
+2026-10-19,周一,第 1 周,Python 核心（一）：变量与动态类型、数值/字符串/布尔、输入输出与格式化；理解「可变类型 vs 不可变类型」,"① 廖雪峰 Python 教程（廖雪峰）「第一个 Python 程序」「Python 基础」章，约 60 分钟  https://liaoxuefeng.com/books/python/introduction/index.html
+② 菜鸟教程「Python3 基础语法」到「Python3 字符串」，约 50 分钟  https://www.runoob.com/python3/python3-basic-syntax.html","1. 在 app/ 下建 training_log/ 包
+2. 写 models.py：用 dataclass 定义 Exercise、WorkoutSet、Workout 三个数据模型
+3. 写一段脚本验证「列表作为默认参数」的坑，并把结论写进注释",42. 接雨水；3. 无重复字符的最长子串,"1. Python 里有哪些可变类型和不可变类型？它们作为函数参数传递时有什么区别？
+2. Python 的深拷贝和浅拷贝有什么区别？分别用在什么场景？
+3. 请说说 Python 的垃圾回收机制，引用计数和分代回收是怎么配合的。",python -c 'from app.training_log.models import Workout' 不报错；坑的注释已写
+2026-10-20,周二,第 1 周,Python 核心（二）：list / tuple / dict / set 四种容器，各自适用场景与时间复杂度；列表推导式与字典推导式,"① 廖雪峰 Python 教程「使用 list 和 tuple」「使用 dict 和 set」2 节，约 50 分钟
+② 菜鸟教程「Python3 列表」「Python3 字典」「Python3 集合」，约 60 分钟","1. 给 models.py 补 __post_init__ 做数据校验（重量不能为负、次数必须大于 0）
+2. 写 storage.py：用 dict 组织训练数据，实现 add_workout / list_workouts
+3. 用列表推导式实现按部位筛选动作",438. 找到字符串中所有字母异位词；2. 两数相加,"1. 列表（list）和元组（tuple）有什么区别？各自适合什么场景？
+2. dict 和 set 的底层是怎么实现的？为什么它们的查找平均是 O(1)？
+3. 字符串为什么被设计成不可变类型？这样做有什么好处？",能通过 python -m app.training_log.storage 跑通「添加 → 列出」的演示
+2026-10-21,周三,第 1 周,Python 核心（三）：函数定义、参数（默认值 / 关键字 / *args / **kwargs）、返回值、作用域与 LEGB 规则,"① 廖雪峰 Python 教程「函数」章（定义函数 / 函数的参数 / 递归函数），约 55 分钟
+② 菜鸟教程「Python3 函数」，约 40 分钟","1. 写 stats.py：calculate_volume(workout) 计算单次训练容量（重量 × 次数求和）
+2. 写 calculate_1rm(weight, reps) 用 Epley 公式估算最大重量
+3. 写 filter_workouts(**kwargs) 支持按日期区间、部位、动作名组合筛选",19. 删除链表的倒数第 N 个结点；21. 合并两个有序链表,"1. 什么是 GIL？它为什么存在？对多线程和多进程程序分别有什么影响？
+2. *args 和 **kwargs 是什么？它们在实际项目中一般怎么用？
+3. Python 函数里的默认参数为什么不要写成可变对象？",stats.py 里每个函数都有类型注解和 docstring；能算出正确的训练容量
+2026-10-22,周四,第 1 周,Python 核心（四）：面向对象——类与实例、__init__、属性与方法的区别、继承与多态、魔术方法,"① 廖雪峰 Python 教程「面向对象编程」「面向对象高级编程」章前 4 节，约 70 分钟
+② 菜鸟教程「Python3 面向对象」，约 50 分钟","1. 把 models.py 重构成类：Workout 提供 add_set() / total_volume() / summary() 方法
+2. 用 __str__ 实现友好的打印输出
+3. 定义自定义异常类 FitnessError 及其子类 ValidationError",141. 环形链表；142. 环形链表 II,"1. 什么是闭包？闭包和装饰器之间是什么关系？
+2. 装饰器的作用是什么？说说 functools.wraps 的作用。
+3. Python 的 lambda 和普通函数有什么区别？什么场景适合用 lambda？",Workout 类能完成「加组 → 统计容量 → 打印摘要」完整流程
+2026-10-23,周五,第 1 周,Python 核心（五）：异常处理（try / except / else / finally）、自定义异常、with 与上下文管理器,"① 廖雪峰 Python 教程「错误、调试和测试」章（错误处理 / 调试 / 单元测试），约 60 分钟
+② 菜鸟教程「Python3 异常处理」，约 40 分钟","1. 给所有用户输入加异常处理，输入非法时不能崩，要给出中文提示
+2. 用 with 实现训练数据的读取与保存（保证文件一定被关闭）
+3. 写第一个 pytest 用例覆盖 ValidationError",146. LRU 缓存；160. 相交链表,"1. 迭代器和可迭代对象有什么区别？for 循环底层是怎么工作的？
+2. 生成器和普通函数有什么区别？yield 到底做了什么？
+3. 生成器表达式和列表推导式有什么区别？大数据量下应该用哪个？",故意输入错误数据程序不崩溃；pytest 至少 1 个用例通过
+2026-10-24,周六,第 1 周,Python 核心（六）：文件读写与 JSON 序列化；模块与包、import 机制；把数据真正落盘,"① 廖雪峰 Python 教程「IO 编程」章（文件读写 / StringIO 和 BytesIO / 操作文件和目录），约 55 分钟
+② 菜鸟教程「Python3 File(文件) 方法」，约 30 分钟","1. 用 json 实现训练记录的保存与加载（data/workouts.json）
+2. 处理「文件不存在」「JSON 格式损坏」两种情况
+3. 把包结构整理好，补 __init__.py",206. 反转链表；234. 回文链表,"1. Python 里 try/except/else/finally 的执行顺序是怎样的？finally 一定会执行吗？
+2. 常见的异常类型有哪些？自定义异常一般用来做什么？
+3. 用 with 打开文件相比自己写 open/close 有什么好处？上下文管理器是怎么实现的？",关掉程序再打开，之前记录的训练数据还在
+2026-10-25,周日,第 1 周,Python 核心（七）：虚拟环境与依赖管理、类型注解与 typing 模块；收尾命令行工具,"① 廖雪峰 Python 教程「虚拟环境」1 节 + 「使用 __future__」，约 30 分钟
+② uv 官方文档中文「Getting started」1 篇，约 20 分钟  https://docs.astral.sh/uv/
+③ 菜鸟教程「Python3 类型注解」，约 30 分钟","1. 用 uv venv --python 3.12 创建虚拟环境，uv pip install -r requirements.txt
+2. 给训练工具写 argparse 命令行入口，支持 add / list / stats / export 四个子命令
+3. 【第 1 周产出】打包成可运行工具，写 README 使用说明并提交",94. 二叉树的中序遍历；104. 二叉树的最大深度,"1. Python 为什么要用虚拟环境？venv、conda、pip 三者的关系是什么？
+2. Python 的类型注解有什么用？运行时真的会检查类型吗？
+3. requirements.txt 是干什么的？怎么保证团队里每个人的依赖版本一致？",uv run python -m app.training_log --help 能看到四个子命令；数据能以 JSON 存取
+2026-10-26,周一,第 2 周,MySQL（一）：数据库与表的基本概念、数据类型、建库建表、增删改查（INSERT / SELECT / UPDATE / DELETE）,"① B 站搜索：MySQL 数据库入门 黑马程序员（未验证）—— 看「数据库相关概念」「MySQL 的启动和停止」「SQL 通用语法及分类」「DDL 操作数据库和表」约 8 集，约 90 分钟
+② MySQL 官方教程「Creating and Using a Database」1 节，约 25 分钟  https://dev.mysql.com/doc/refman/8.0/en/tutorial.html","1. 用 DBeaver 连上本地 Docker 里的 MySQL
+2. 写 docker/init/init.sql，设计 user / exercise / workout / workout_set 四张表
+3. 用 INSERT 往 exercise 表插入 20 个常用动作",226. 翻转二叉树；101. 对称二叉树,"1. MySQL 索引的底层数据结构是什么？为什么用 B+ 树？
+2. MySQL 有哪些常见的存储引擎？InnoDB 和 MyISAM 有什么区别？
+3. 主键索引和唯一索引有什么区别？一张表可以没有主键吗？",DBeaver 里能看到 fitness 库的 4 张表和 20 条动作数据
+2026-10-27,周二,第 2 周,MySQL（二）：约束（主键 / 唯一 / 非空 / 外键）、多表关系、多表连接查询（INNER / LEFT / RIGHT JOIN）,"① B 站搜索：MySQL 数据库入门 黑马程序员（未验证）—— 看「约束」「多表查询」「内连接」「外连接」约 10 集，约 100 分钟
+② 菜鸟教程「MySQL 连接(JOIN)」，约 30 分钟  https://www.runoob.com/mysql/mysql-join.html","1. 编写「查询某用户某次训练的所有动作与组数」的多表连接 SQL
+2. 编写「统计每个动作的历史最大重量」的聚合 SQL
+3. 把这两条 SQL 存到 scripts/queries.sql 并加中文注释",543. 二叉树的直径；108. 将有序数组转换为二叉搜索树,"1. 事务的四种隔离级别分别解决了什么问题？
+2. MVCC 是怎么实现的？
+3. 事务的 ACID 分别指什么？靠什么机制保证？",两条 SQL 在 DBeaver 里能跑出正确结果；外键约束生效（删 user 会级联删 workout）
+2026-10-28,周三,第 2 周,MySQL（三）：索引原理（B+ 树）、索引类型、最左前缀原则、EXPLAIN 执行计划分析与索引优化,"① B 站搜索：MySQL 索引原理 B+树 讲解（未验证）—— 约 6 集，约 80 分钟
+② 小林 coding「图解 MySQL」索引篇，约 40 分钟  https://xiaolincoding.com/mysql/","1. 给 workout(user_id, workout_date) 建联合索引，用 EXPLAIN 对比建索引前后
+2. 用 EXPLAIN 分析「本周训练量排行榜」查询，把 type 优化到 ref 或 range
+3. 把 EXPLAIN 结果截图和结论写进 docs/数据库设计.md",98. 验证二叉搜索树；230. 二叉搜索树中第 K 小的元素,"1. 什么是最左前缀原则？为什么联合索引要按这个原则设计？
+2. 什么情况下索引会失效？举几个常见的例子。
+3. 聚集索引和非聚集索引有什么区别？回表是什么意思？",EXPLAIN 的 key 列能命中你建的索引；文档里有优化前后的对比
+2026-10-29,周四,第 2 周,MySQL（四）：事务与 ACID、四种隔离级别、MVCC 原理、行锁与死锁排查,"① 小林 coding「图解 MySQL」事务篇 + 锁篇，约 70 分钟  https://xiaolincoding.com/mysql/
+② B 站搜索：MySQL 事务隔离级别 讲解（未验证）—— 约 5 集，约 60 分钟","1. 在 Python 里用 pymysql 实现一个事务：插入 workout + 多条 workout_set，任一步失败就回滚
+2. 手动制造一次死锁，用 SHOW ENGINE INNODB STATUS 查看死锁日志
+3. 验证明细：事务回滚后数据确实没写进去",199. 二叉树的右视图；114. 二叉树展开为链表,"1. 什么是慢查询？你会怎么定位并优化一条慢 SQL？
+2. explain 命令的输出里你会重点看哪些字段？
+3. 深分页（limit 100000, 10）为什么慢？有什么优化思路？",事务回滚后数据库里查不到脏数据；能看懂死锁日志里的两个事务
+2026-10-30,周五,第 2 周,Git（一）：分支的创建与切换、合并与冲突解决、rebase vs merge、.gitignore 深入,"① 廖雪峰 Git 教程「分支管理」章全部（创建分支 / 解决冲突 / 分支策略 / Bug 分支），约 70 分钟  https://liaoxuefeng.com/books/git/branch/index.html
+② B 站搜索：Git 分支与冲突解决（未验证）—— 约 5 集，约 50 分钟","1. 新建分支 feature/mysql-migration，在分支上写 scripts/migrate_json_to_mysql.py
+2. 故意制造一次冲突并手动解决，把过程记进 docs/开发日志.md
+3. 练一次 git rebase，把 3 个零碎提交合并成 1 个有意义的提交",105. 从前序与中序遍历序列构造二叉树；437. 路径总和 III,"1. 说说 SQL 的增删改查四类语句，写一个带条件的分页查询。
+2. inner join、left join 和 right join 有什么区别？
+3. where 和 having 有什么区别？group by 一般和哪些函数一起用？",分支已合并回 main；冲突解决过程有记录；rebase 后提交历史干净
+2026-10-31,周六,第 2 周,Linux 常用命令：文件与目录操作、权限、进程管理、文本处理（grep / awk / tail）、网络排查（netstat / ss / curl）,"① B 站搜索：Linux 入门教程 韩顺平（未验证）—— 看「Linux 目录结构」「文件与目录操作」「进程管理」「网络排查」约 8 集，约 90 分钟
+② 菜鸟教程「Linux 常用命令」，约 20 分钟  https://www.runoob.com/linux/linux-command-manual.html","1. 在 WSL2 Ubuntu 里把项目 clone 下来跑一遍
+2. 用 grep / tail -f 定位一条日志里的报错
+3. 用 ss -lntp 查端口占用，把常用命令整理成 docs/linux-cheatsheet.md",236. 二叉树的最近公共祖先；124. 二叉树中的最大路径和,"1. 什么是脏读、不可重复读和幻读？分别对应哪个隔离级别能解决？
+2. 什么是行锁和表锁？InnoDB 的行锁是怎么实现的？
+3. 什么是死锁？MySQL 里出现死锁你会怎么排查和处理？",WSL 里能跑通项目；cheatsheet 至少 20 条命令且每条有中文说明
+2026-11-01,周日,第 2 周,【第 2 周复盘】把第 1 周的 JSON 数据真正迁移进 MySQL；收尾四张表设计与迁移脚本,"① 视需要回看本周不懂的章节
+② 小林 coding「图解 MySQL」复盘，约 40 分钟","1. 【第 2 周产出】写完并跑通 scripts/migrate_json_to_mysql.py，把 JSON 数据全部迁进四张表
+2. 校验迁移结果：SELECT COUNT(*) 对比迁移前后的记录数
+3. 复盘：本周 GitHub 提交天数、力扣完成数、投递数与面试数，写进 docs/周复盘.md",200. 岛屿数量；994. 腐烂的橘子,"1. Git 里 merge 和 rebase 有什么区别？分别在什么场景下用？
+2. git reset 和 git revert 有什么区别？已经 push 的提交要怎么撤回？
+3. Linux 下怎么查看一个日志文件的实时新增内容？怎么快速找出一段报错上下文？",迁移前后记录数一致；周复盘已写；两周累计 GitHub 提交 ≥ 14 天
+2026-11-02,周一,第 3 周,FastAPI（一）：框架定位与 ASGI、环境搭建、路由与路径参数/查询参数、自动生成的 Swagger 文档,"① FastAPI 官方中文文档「教程 - 用户指南」第 1-4 节（第一步 / 路径参数 / 查询参数 / 请求体），约 60 分钟  https://fastapi.tiangolo.com/zh/tutorial/
+② B 站搜索：FastAPI 入门教程（未验证）—— 约 6 集，约 60 分钟","1. 搭好 FastAPI 项目骨架：app/main.py + app/api/ + app/core/config.py
+2. 用 pydantic-settings 从 .env 读取配置（数据库、Redis、密钥）
+3. 实现 /health 和 /api/v1/exercises 两个接口，跑通 /docs",207. 课程表；46. 全排列,"1. FastAPI 和 Flask、Django 相比有什么特点？为什么它适合做 AI 应用的接口层？
+2. FastAPI 的路由是怎么定义的？路径参数和查询参数有什么区别？
+3. 什么是 ASGI？它和 WSGI 有什么区别？",打开 http://127.0.0.1:8000/docs 能看到接口文档并能调通 /api/v1/exercises
+2026-11-03,周二,第 3 周,FastAPI（二）：Pydantic 模型与数据校验、请求体与响应模型、字段校验与自定义校验器,"① FastAPI 官方中文文档「教程 - 用户指南」第 5-10 节（响应模型 / 额外模型 / 请求体更新 / 字段 / 嵌套模型 / 示例），约 80 分钟
+② Pydantic 官方文档「Models」1 篇，约 30 分钟  https://docs.pydantic.dev/latest/concepts/models/","1. 定义 ExerciseCreate / ExerciseOut / WorkoutCreate / WorkoutOut / WorkoutSetIn 五个模型
+2. 给 weight_kg 加 ge=0、给 reps 加 gt=0 的字段约束
+3. 写自定义校验器：训练日期不能是未来",22. 括号生成；78. 子集,"1. Pydantic 模型在 FastAPI 里起什么作用？它是怎么做请求参数校验的？
+2. Pydantic 的 BaseModel 和 Python 的 dataclass 有什么区别？
+3. 接口返回的数据结构应该怎么定义？为什么不要直接返回数据库 ORM 对象？",传非法数据（负重量、未来日期）接口返回 422 且错误信息清晰
+2026-11-04,周三,第 3 周,FastAPI（三）：依赖注入（Depends）、中间件、统一异常处理与统一响应格式、CORS,"① FastAPI 官方中文文档「教程 - 用户指南」依赖项章节（依赖项 / 类作为依赖项 / 子依赖项 / 路径操作装饰器依赖项），约 70 分钟
+② FastAPI 官方中文文档「高级用户指南 - 中间件」，约 25 分钟","1. 实现 get_db() 依赖，用 yield 保证 session 一定关闭
+2. 写统一响应模型 ApiResponse{code, message, data} 和全局异常处理器
+3. 加日志中间件，记录每个请求的方法、路径、耗时",17. 电话号码的字母组合；79. 单词搜索,"1. FastAPI 的依赖注入（Depends）是干什么的？一般用它做哪些事情？
+2. FastAPI 的中间件是怎么工作的？一般用来做什么？
+3. 怎么在 FastAPI 里做统一的异常处理和统一响应格式？",所有接口返回统一格式；控制台能看到每个请求的耗时日志
+2026-11-05,周四,第 3 周,SQLAlchemy（一）：ORM 概念、模型定义与映射、Session 与 CRUD、relationship 关联关系,"① SQLAlchemy 2.0 官方文档「ORM Quick Start」，约 60 分钟  https://docs.sqlalchemy.org/en/20/orm/quickstart.html
+② B 站搜索：SQLAlchemy 教程（未验证）—— 约 6 集，约 60 分钟","1. 把四张表用 SQLAlchemy 模型重新定义（app/models/）
+2. 配好 relationship：Workout 一对多 WorkoutSet，WorkoutSet 多对一 Exercise
+3. 写 CRUD 层 app/crud/，实现训练记录的增删改查",39. 组合总和；131. 分割回文串,"1. SQLAlchemy 里 ORM 是什么？它和直接写 SQL 各自的优缺点是什么？
+2. SQLAlchemy 的 session 是什么？为什么要用完就关闭？
+3. N+1 查询问题是怎么产生的？怎么避免？",能用 Python 代码完成「建训练 → 加 3 组 → 查出来」的完整闭环
+2026-11-06,周五,第 3 周,认证与安全（一）：用户注册登录、密码哈希（bcrypt）、JWT 结构与签发校验、OAuth2 密码流,"① FastAPI 官方中文文档「教程 - 安全性」全部（安全简介 / 第一步 / 获取当前用户），约 70 分钟  https://fastapi.tiangolo.com/zh/tutorial/security/
+② JWT 官方介绍，约 20 分钟  https://jwt.io/introduction","1. 实现 /api/v1/auth/register：密码用 bcrypt 哈希后入库，绝不存明文
+2. 实现 /api/v1/auth/login：校验密码并签发 JWT（有效期 7 天）
+3. 写 get_current_user 依赖，保护需要登录的接口",51. N 皇后；198. 打家劫舍,"1. JWT 是什么？它的结构由哪几部分组成？
+2. JWT 和传统的 session 登录有什么区别？各自的优缺点是什么？
+3. JWT 签发之后服务端怎么让它失效？说说你的思路。",用 Swagger 的 Authorize 按钮登录后能访问受保护接口；数据库里查不到明文密码
+2026-11-07,周六,第 3 周,认证与安全（二）：把认证接到业务接口上；HTTP/HTTPS 与 TCP 三次握手原理（八股重点）,"① FastAPI 官方中文文档「教程 - 更大的应用」1 节，约 30 分钟
+② 小林 coding「图解网络」HTTP 篇 + TCP 篇前三节，约 70 分钟  https://xiaolincoding.com/network/","1. 给训练记录接口全部加上登录校验，只能操作自己的数据
+2. 实现 /api/v1/workouts 的 POST / GET / PUT / DELETE 全套
+3. 【第 3 周产出】整理成「训练记录 API v1」，写 docs/接口文档.md",70. 爬楼梯；118. 杨辉三角,"1. HTTP 和 HTTPS 的区别是什么？HTTPS 的加密过程大致是怎样的？
+2. TCP 三次握手的过程是怎样的？为什么不是两次？
+3. GET 和 POST 的区别是什么？",用两个不同账号测试：A 账号查不到 B 账号的训练记录（越权测试通过）
+2026-11-08,周日,第 3 周,【第 3 周复盘】API 分层重构（router / service / crud / schema 分离）；用 pytest 跑通第一个接口测试,"① FastAPI 官方中文文档「教程 - 测试」1 节，约 30 分钟  https://fastapi.tiangolo.com/zh/tutorial/testing/
+② 视需要回看本周不懂的章节","1. 把代码按 router / service / crud / schema 分层，main.py 只负责组装
+2. 写 tests/test_auth.py：注册 → 登录 → 拿 token → 访问受保护接口
+3. 复盘：本周 GitHub 提交天数、力扣完成数、投递数与面试数，写进 docs/周复盘.md",279. 完全平方数；322. 零钱兑换,"1. HTTP/1.1 和 HTTP/2 有什么区别？HTTP 是无状态协议吗，怎么保持登录态？
+2. 什么是跨域（CORS）？后端一般怎么处理？
+3. Cookie、SessionStorage 和 LocalStorage 有什么区别？",pytest 全绿；三周累计 GitHub 提交 ≥ 21 天；简历已把 fitness-ai 提到第一位
+2026-11-09,周一,第 4 周,Redis（一）：Redis 定位与为什么快、五种基本数据结构、String/Hash 操作、与 Python 的连接（redis-py）,"① B 站搜索：Redis 入门教程 尚硅谷（未验证）—— 看「Redis 介绍」「Redis 安装」「五种常用数据类型」约 8 集，约 90 分钟
+② Redis 官方文档「Introduction to Redis」，约 25 分钟  https://redis.io/docs/latest/develop/","1. 在 Python 里封装 Redis 连接（app/core/redis_client.py），连接池复用
+2. 实现「热点动作列表」缓存：读 exercise 表前先查 Redis
+3. 用 redis-cli 手动验证缓存命中",139. 单词拆分；300. 最长递增子序列,"1. Redis 为什么快？
+2. Redis 有哪些常用的数据结构？分别适合什么业务场景？
+3. Redis 持久化 RDB 和 AOF 的区别是什么？",第二次请求同一个接口时能明显看到走了缓存（日志里有 cache hit）
+2026-11-10,周二,第 4 周,Redis（二）：缓存三大问题（穿透 / 击穿 / 雪崩）、缓存与数据库一致性、过期策略与内存淘汰,"① 小林 coding「图解 Redis」缓存篇，约 60 分钟  https://xiaolincoding.com/redis/
+② B 站搜索：Redis 缓存穿透 击穿 雪崩（未验证）—— 约 4 集，约 50 分钟","1. 给热门接口加缓存并设置随机过期时间（避免同一时刻集体失效）
+2. 实现空值缓存 + 参数校验，防缓存穿透
+3. 写一个「缓存击穿」的最小复现 demo，再写互斥锁方案修掉它",152. 乘积最大子数组；416. 分割等和子集,"1. 缓存穿透、缓存击穿、缓存雪崩分别是什么？怎么解决？
+2. 缓存和数据库的一致性怎么保证？你了解哪些更新策略？
+3. Redis 的过期删除策略和内存淘汰策略分别有哪些？",能讲清三大问题的区别与你的解决方案；代码里能看到对应的防御措施
+2026-11-11,周三,第 4 周,Redis（三）：计数器与接口限流（固定窗口 / 滑动窗口）、分布式锁（SETNX + 过期时间 + Lua 释放）,"① Redis 官方文档「Transactions」「Expire」，约 40 分钟
+② B 站搜索：Redis 实现接口限流 分布式锁（未验证）—— 约 5 集，约 60 分钟","1. 用 INCR + EXPIRE 实现「每个用户每分钟最多 60 次请求」的限流中间件
+2. 限流触发时返回 429 和友好提示
+3. 用 SET key value NX EX 实现一个简单的分布式锁并写测试",32. 最长有效括号；62. 不同路径,"1. 怎么用 Redis 实现一个接口限流？说说固定窗口和滑动窗口的区别。
+2. 用 Redis 做分布式锁要注意哪些问题？为什么要设置过期时间？
+3. Redis 的 setnx 和 set 命令在实现锁时有什么区别？",用循环快速请求 100 次，第 61 次开始返回 429
+2026-11-12,周四,第 4 周,Redis（四）：有序集合 ZSet 与排行榜、ZSet 底层跳表、大 key 与热 key 的危害及排查,"① Redis 官方文档「Sorted sets」，约 30 分钟  https://redis.io/docs/latest/develop/data-types/sorted-sets/
+② B 站搜索：Redis ZSet 排行榜 实现（未验证）—— 约 4 集，约 50 分钟","1. 【第 4 周产出】实现「本周训练量排行榜」：用 ZINCRBY 累加容量，ZREVRANGE 取 Top10
+2. 接口 /api/v1/rank/week 返回带排名的榜单
+3. 写一个造数脚本，插 20 个用户的数据验证排行正确",64. 最小路径和；5. 最长回文子串,"1. 怎么用 Redis 的有序集合（ZSet）实现一个排行榜？
+2. ZSet 的底层数据结构是什么？为什么用跳表？
+3. Redis 的大 key 和热 key 有什么危害？怎么发现和处理？",排行榜接口返回的排名与手动计算的容量一致；Top10 顺序正确
+2026-11-13,周五,第 4 周,日志（一）：logging 模块（logger / handler / formatter）、日志级别、按天切割、结构化日志,"① 廖雪峰 Python 教程「错误、调试和测试」之调试与日志部分，约 30 分钟
+② Python 官方文档「logging HOWTO」，约 60 分钟  https://docs.python.org/zh-cn/3/howto/logging.html","1. 配置统一日志：控制台 + 文件双输出，文件按天切割
+2. 用 loguru 或 logging 在 service 层记录关键操作（谁在什么时候做了什么）
+3. 日志里禁止打印密码、token、手机号（自己检查一遍）",1143. 最长公共子序列；72. 编辑距离,"1. Python 的 logging 模块里 logger、handler、formatter 分别是什么？
+2. 日志级别一般怎么划分？生产环境应该打什么级别？
+3. 线上服务出现问题时，你会怎么通过日志排查？",logs/app.log 里有结构化日志；全文搜索日志文件搜不到任何密码或 token 明文
+2026-11-14,周六,第 4 周,测试（一）：pytest 基础——fixture、参数化、断言、临时数据库、mock 外部依赖,"① pytest 官方文档「Get Started」「Fixtures」，约 60 分钟  https://docs.pytest.org/en/stable/
+② B 站搜索：pytest 入门教程（未验证）—— 约 5 集，约 50 分钟","1. 写 conftest.py：用 fixture 提供临时测试数据库和 TestClient
+2. 用 @pytest.mark.parametrize 给「容量计算」写多组用例（含边界值 0）
+3. 用 mock 模拟 Redis，测试不依赖真实 Redis 也能跑",34. 在排序数组中查找元素的第一个和最后一个位置；33. 搜索旋转排序数组,"1. pytest 里 fixture 是干什么的？它和 unittest 的 setUp 有什么区别？
+2. 什么是参数化测试？怎么给一个函数写多组测试用例？
+3. 单元测试里怎么模拟数据库或第三方接口？mock 的作用是什么？",pytest -v 显示所有用例通过；跑测试不需要启动 Redis
+2026-11-15,周日,第 4 周,【第 4 周复盘】补齐核心接口测试覆盖率；收尾本周产出并更新简历,"① pytest 官方文档「Monkeypatching」，约 30 分钟
+② 视需要回看本周不懂的章节","1. 【第 4 周产出】核心接口测试补齐：认证 3 个 + 训练 CRUD 5 个 + 排行榜 2 个
+2. 生成覆盖率报告（pytest --cov）
+3. 复盘：本周 GitHub 提交天数、力扣完成数、投递数与面试数，写进 docs/周复盘.md",20. 有效的括号；155. 最小栈,"1. Redis 是单线程还是多线程的？为什么单线程还能支持高并发？
+2. 什么是 IO 多路复用？select、poll、epoll 有什么区别？
+3. Redis 主从复制和哨兵机制解决了什么问题？",pytest --cov 显示核心模块覆盖率 ≥ 60%；本周简历已新增 Redis 相关描述
+2026-11-16,周一,第 5 周,Docker（一）：镜像与容器、分层存储、常用命令（build / run / ps / logs / exec / rm）、数据卷,"① B 站搜索：Docker 入门教程 尚硅谷（未验证）—— 看「镜像与容器」「常用命令」「数据卷」约 8 集，约 90 分钟
+② Docker 官方文档「Get started」模块 1-4，约 40 分钟  https://docs.docker.com/get-started/","1. 给项目写 Dockerfile：基于 python:3.12-slim，多阶段构建减小体积
+2. 用 .dockerignore 排除 .venv / .git / .env
+3. 用 docker build 构建镜像并 docker run 起容器，验证接口可访问",53. 最大子数组和；56. 合并区间,"1. 进程和线程的区别是什么？
+2. 为什么进程切换比线程切换开销大？
+3. 什么是协程？协程和线程的区别是什么？",docker images 能看到你的镜像；容器里的接口能正常返回数据
+2026-11-17,周二,第 5 周,Docker（二）：docker-compose 编排多服务、服务依赖与健康检查、自定义网络、环境变量注入,"① Docker 官方文档「Docker Compose」，约 50 分钟  https://docs.docker.com/compose/
+② B 站搜索：docker compose 教程（未验证）—— 约 5 集，约 60 分钟","1. 把 app + mysql + redis 三个服务写进 docker-compose.yml，用 depends_on + healthcheck 控制启动顺序
+2. 应用容器通过服务名（mysql / redis）访问，验证自定义网络连通
+3. 密码全部通过 env_file 注入，检查 compose 文件里没有任何明文密码",189. 轮转数组；238. 除自身以外数组的乘积,"1. 操作系统的内存管理方式有哪些？分页和分段有什么区别？
+2. 什么是虚拟内存？它解决了什么问题？
+3. 什么是缺页中断？页面置换算法你知道哪些？",docker compose up -d 一条命令能起全套服务；compose 文件里搜不到密码
+2026-11-18,周三,第 5 周,Linux 运维排查：进程与端口排查、内存与磁盘查看、日志分析、systemd 基础,"① B 站搜索：Linux 性能排查 top free df（未验证）—— 约 5 集，约 60 分钟
+② 小林 coding「图解系统」操作系统篇，约 50 分钟  https://xiaolincoding.com/os/","1. 在 WSL 里用 docker compose 起服务，用 top / free / df / ss 排查一遍资源占用
+2. 写一个「CPU 飙高」的 Python 脚本，用 top + py-spy 思路定位到具体函数
+3. 整理 docs/排错手册.md：至少 5 个真实问题的排查过程",41. 缺失的第一个正数；73. 矩阵置零,"1. Linux 怎么查看端口占用和排查 CPU 高的问题？
+2. 怎么查看内存占用情况？free 命令里的 available 和 free 有什么区别？
+3. 怎么查看一个进程打开了哪些文件？lsof 一般用来干什么？",排错手册里 5 个问题都写了「现象 → 排查命令 → 原因 → 解决方案」
+2026-11-19,周四,第 5 周,Nginx（一）：反向代理、静态资源、负载均衡、Nginx 配置文件结构,"① 菜鸟教程「Nginx 入门」，约 40 分钟  https://www.runoob.com/w3cnote/nginx-setup-intro.html
+② Nginx 官方文档「Beginner's Guide」，约 40 分钟  https://nginx.org/en/docs/beginners_guide.html","1. 用 Nginx 反向代理 FastAPI 服务（容器化），配置 /api 转发到应用
+2. 配置 gzip 压缩和访问日志
+3. 用 curl 验证通过 Nginx 能访问到接口",54. 螺旋矩阵；48. 旋转图像,"1. Docker 是什么？它和虚拟机有什么区别？
+2. Docker 镜像和容器是什么关系？为什么说镜像是分层的？
+3. Dockerfile 里 FROM、COPY、RUN、CMD、ENTRYPOINT 分别是什么作用？",访问 http://localhost/api/v1/exercises 能拿到数据；Nginx 访问日志有记录
+2026-11-20,周五,第 5 周,云服务器部署（一）：购买学生机与安全组配置、SSH 远程登录、基础环境安装,"① 阿里云或腾讯云官方文档「轻量应用服务器快速入门」，约 40 分钟
+② B 站搜索：云服务器部署 Python 项目（未验证）—— 约 6 集，约 60 分钟","1. 【需要花钱，约 50-160 元/年】买 1 年学生机（2 核 2G 或 2 核 4G，包年包月，别选按量付费）
+2. 配置安全组：只开放 22 / 80 / 443
+3. 用 SSH 登录服务器，安装 Docker 与 docker compose",240. 搜索二维矩阵 II；160. 相交链表（二刷）,"1. docker-compose 是干什么的？它解决了什么问题？
+2. 容器之间怎么互相访问？什么是自定义网络？
+3. 项目里的数据库密码、API Key 这些配置应该怎么传给容器？",能 SSH 登录服务器；服务器上 docker --version 有输出；安全组只开了 3 个端口
+2026-11-21,周六,第 5 周,云服务器部署（二）：把项目部署上线，域名与 HTTPS 概念，用 .env 管理线上密钥,"① Docker 官方文档「Deploy your app」，约 40 分钟
+② B 站搜索：Docker 部署 FastAPI 到云服务器（未验证）—— 约 6 集，约 60 分钟","1. 把代码拉到服务器，在服务器上新建 .env（权限设为 600），填好线上密码
+2. docker compose up -d 起服务，Nginx 反代，公网 IP 可访问
+3. 【第 5 周产出】记录公网地址，写进 README 和简历",206. 反转链表（二刷）；234. 回文链表（二刷）,"1. Nginx 能做哪些事情？什么是反向代理？
+2. 反向代理和正向代理有什么区别？
+3. Nginx 的负载均衡策略有哪些？",用手机流量（非家里 WiFi）打开 http://<公网IP>/docs 能看到接口文档
+2026-11-22,周日,第 5 周,【第 5 周复盘】部署收尾与安全加固：容器日志、资源限制、备份脚本、上线检查清单,"① Docker 官方文档「Resource constraints」，约 30 分钟
+② 视需要回看本周不懂的章节","1. 给容器加内存/CPU 限制，配置日志轮转避免磁盘占满
+2. 写数据库备份脚本（mysqldump + 定时任务）
+3. 复盘：本周 GitHub 提交天数、力扣完成数、投递数与面试数，写进 docs/周复盘.md",2. 两数相加（二刷）；19. 删除链表的倒数第 N 个结点（二刷）,"1. Docker 容器和宿主机之间怎么共享文件？数据卷的作用是什么？
+2. 容器里的服务日志应该怎么收集和查看？
+3. 为什么容器里的应用要监听 0.0.0.0 而不是 127.0.0.1？",服务器重启后服务能自动起来；备份脚本跑通并生成 .sql 文件
+2026-11-23,周一,第 6 周,大模型基础：Token 与上下文窗口、温度参数、OpenAI 兼容接口格式、申请 API Key 与费用控制,"① DeepSeek 官方 API 文档「首次调用 API」「多轮对话」，约 50 分钟  https://api-docs.deepseek.com/zh-cn/
+② 阿里云百炼官方文档「快速入门」，约 40 分钟  https://help.aliyun.com/zh/model-studio/","1. 注册 DeepSeek 开放平台与阿里云百炼，各自创建 API Key（只用你自己操作）
+2. 把 Key 写进本地 .env 与服务器的 .env（600 权限），确认 .env 在 .gitignore 里
+3. 用 Python 写最小调用脚本，跑通一次「你好」对话",49. 字母异位词分组（二刷）；128. 最长连续序列（二刷）,"1. 大模型里的 Token 是什么？中文和英文的 Token 数量大致怎么估算？
+2. 什么是上下文窗口？超出窗口长度一般怎么处理？
+3. 温度参数（temperature）和 top_p 是干什么的？分别适合什么场景？",脚本能打印模型回复；git status 里看不到 .env；GitHub 仓库里搜不到任何 sk- 开头的字符串
+2026-11-24,周二,第 6 周,Prompt 工程：结构化 Prompt、系统提示词与角色设定、Few-shot、思维链、结构化 JSON 输出,"① Datawhale 大模型应用开发教程（Datawhale）Prompt 章节，约 60 分钟  https://github.com/datawhalechina/llm-universe
+② DeepSeek 官方文档「提示词工程」相关章节，约 40 分钟","1. 写 app/ai/prompts.py：定义「训练周报」的 Prompt 模板（角色 + 输入数据 + 输出格式要求）
+2. 要求模型输出严格 JSON（含 summary / highlights / suggestions 字段），并用 Pydantic 校验
+3. 对比 3 版 Prompt 的输出质量，把结论写进 docs/Prompt笔记.md",15. 三数之和（二刷）；42. 接雨水（二刷）,"1. 什么是 Prompt 工程？写一个结构化 Prompt 一般要包含哪些部分？
+2. Zero-shot、Few-shot 和思维链（CoT）提示有什么区别？
+3. 怎么让大模型的输出稳定成 JSON 格式？",模型返回的内容能被 Pydantic 解析成对象；Prompt 笔记里有 3 版对比
+2026-11-25,周三,第 6 周,大模型应用（一）：把训练数据喂给模型，生成「AI 训练周报」；Token 成本与超长输入的处理,"① Datawhale 大模型应用开发教程「构建知识库」章节，约 60 分钟  https://github.com/datawhalechina/llm-universe
+② DeepSeek 官方文档「Token 用量计算」，约 30 分钟","1. 实现 /api/v1/ai/weekly-report：查出本周训练数据 → 组装 Prompt → 调模型 → 返回周报
+2. 只把「按动作聚合后的统计结果」喂给模型，不要把原始几百条组数据全塞进去（省 Token）
+3. 接口加缓存：同一周的数据 24 小时内不重复调模型",3. 无重复字符的最长子串（二刷）；438. 找到字符串中所有字母异位词（二刷）,"1. 什么是 RAG？它主要解决大模型的什么问题？
+2. RAG 的完整流程包含哪些步骤？向量检索是怎么工作的？
+3. RAG 和微调（Fine-tuning）有什么区别？各自适合什么场景？",接口能返回一段通顺的中文训练周报，且内容确实基于你的真实训练数据
+2026-11-26,周四,第 6 周,大模型应用（二）：流式输出原理与 SSE，理解「一次性返回 vs 流式返回」的差异,"① DeepSeek 官方文档「流式输出」，约 40 分钟  https://api-docs.deepseek.com/zh-cn/
+② FastAPI 官方中文文档「自定义响应 - 流式响应」，约 30 分钟","1. 用 StreamingResponse 实现 /api/v1/ai/chat/stream，逐块返回模型输出
+2. 用 curl -N 或 Apifox 验证是真的流式（不是等全部生成完才返回）
+3. 处理客户端中断连接的情况（不要留下没关闭的请求）",560. 和为 K 的子数组（二刷）；11. 盛最多水的容器（二刷）,"1. 大模型流式输出的原理是什么？和一次性返回相比有什么优缺点？
+2. SSE 和 WebSocket 有什么区别？做流式输出应该选哪个？
+3. 用 Python 调用大模型的 stream 接口时，要注意哪些问题？",curl -N 能逐字看到输出；断开连接后服务端日志没有异常堆栈
+2026-11-27,周五,第 6 周,大模型应用（三）：Function Calling 与工具调用思路，为「AI 私教 Agent」打地基,"① DeepSeek 官方文档「Function Calling」，约 50 分钟  https://api-docs.deepseek.com/zh-cn/
+② Datawhale 大模型应用开发教程「Agent」相关章节，约 50 分钟  https://github.com/datawhalechina/llm-universe","1. 定义工具查询函数：get_recent_workouts(user_id, days)、get_personal_best(user_id, exercise)
+2. 让模型根据用户提问决定调用哪个函数，拿到结果后再生成自然语言回答
+3. 提一个问题「我上周练了多少组卧推」，跑通完整链路",141. 环形链表（二刷）；142. 环形链表 II（二刷）,"1. 什么是 Function Calling（工具调用）？它的执行流程是怎样的？
+2. OpenAI 兼容格式的接口里，messages、role 和 tools 分别是什么含义？
+3. 大模型接口普遍很慢，服务端要怎么设计才能撑住并发？",问「我上周练了多少」时，模型会先调工具再回答，答案是真实数据而非编造
+2026-11-28,周六,第 6 周,大模型应用（四）：多轮对话上下文管理、API Key 安全、超时重试与降级,"① Datawhale 大模型应用开发教程「多轮对话」章节，约 50 分钟
+② DeepSeek 官方文档「错误码」，约 30 分钟","1. 实现多轮对话：对话历史存 Redis（带过期时间），只保留最近 N 轮
+2. 给模型调用加超时（30 秒）+ 重试（最多 2 次）+ 失败降级（返回友好提示而不是 500）
+3. 全仓库搜一遍 api_key / sk- / password，确认没有硬编码",104. 二叉树的最大深度（二刷）；226. 翻转二叉树（二刷）,"1. 设计一个支持多轮对话的大模型接口，你会怎么设计？对话历史放在哪里？
+2. API Key 应该怎么管理？为什么绝对不能写在前端代码里？
+3. 调用第三方大模型接口超时或报错，你会怎么做重试和降级？",对话能记住上文；把 Key 临时改错后接口返回友好提示而不是崩溃
+2026-11-29,周日,第 6 周,大模型应用（五）：接入第二个模型（通义千问），把模型调用抽象成可切换的 Provider,"① 阿里云百炼官方文档「OpenAI 兼容接口」，约 40 分钟  https://help.aliyun.com/zh/model-studio/
+② Datawhale 大模型应用开发教程相关章节，约 50 分钟","1. 抽象 LLMProvider 基类，实现 DeepSeekProvider 与 QwenProvider
+2. 通过 .env 里的配置切换模型，业务代码完全不用改
+3. 写降级逻辑：主模型失败自动切备用模型",101. 对称二叉树（二刷）；543. 二叉树的直径（二刷）,"1. 怎么估算一次大模型调用的 Token 成本和费用？有哪些省钱思路？
+2. 长对话超出上下文窗口你有什么办法？说说自己的实现思路。
+3. 大模型的幻觉是怎么产生的？工程上有哪些缓解手段？",改一行 .env 配置就能从 DeepSeek 切到通义千问，接口行为不变
+2026-11-30,周一,第 6 周,【总复盘 + 简历 v2】项目整体收尾：README 完善、架构图、演示动图、简历全面更新,"① 视需要回看6 周里任何不懂的章节
+② GitHub 官方文档「关于 README」复习，约 20 分钟","1. 【第 6 周产出】完善 README：项目架构图 + 功能截图/动图 + 部署地址 + 本地启动步骤
+2. 【重要】按 docs/简历更新路线.md 把六周产出全部写进简历，生成简历 v2
+3. 总复盘：6 周 GitHub 提交天数、力扣完成题数、投递数、面试数、拿到几个 offer",22. 括号生成（二刷）；46. 全排列（二刷）,"1. 第二周复习：MySQL 索引为什么用 B+ 树？什么情况下索引会失效？
+2. 第二周复习：事务的隔离级别和 MVCC 分别解决了什么问题？
+3. 第四周复习：缓存穿透、击穿、雪崩的区别，以及你在项目里会怎么处理？",简历 v2 已保存到 D:\code\resume\；GitHub 主页有完整项目；投递总数 ≥ 200 份

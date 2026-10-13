@@ -1,0 +1,79 @@
+# MySQL 8.0 + Redis 7 本地开发环境
+# 用法：
+#   1. 先在项目根目录复制 .env.example 为 .env 并填好密码
+#   2. docker compose up -d
+#   3. docker compose ps        # 查看状态
+#   4. docker compose logs -f   # 看日志
+#   5. docker compose down      # 停止（数据仍然保留在数据卷里）
+#
+# 注意：所有密码都从 .env 读取，绝对不硬编码在这个文件里
+
+name: fitness-ai
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: fitness-mysql
+    restart: unless-stopped
+    ports:
+      # 左边是宿主机端口（改 .env 里的 MYSQL_PORT 即可，例如本机已装 MySQL 时改成 3307）
+      - "${MYSQL_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?请在 .env 中设置 MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-fitness}
+      MYSQL_USER: ${MYSQL_USER:-fitness}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?请在 .env 中设置 MYSQL_PASSWORD}
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-time-zone=+08:00
+      - --lower_case_table_names=1
+    volumes:
+      # 数据卷持久化：就算删掉容器，数据也还在
+      - fitness_mysql_data:/var/lib/mysql
+      # 首次启动时自动执行建表脚本
+      - ./docker/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - fitness-net
+
+  redis:
+    image: redis:7
+    container_name: fitness-redis
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --requirepass
+      - "${REDIS_PASSWORD:-}"
+    volumes:
+      # AOF 持久化 + 数据卷
+      - fitness_redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$$REDIS_PASSWORD\" ping | grep -q PONG || redis-cli ping | grep -q PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - fitness-net
+
+volumes:
+  fitness_mysql_data:
+    name: fitness_mysql_data
+  fitness_redis_data:
+    name: fitness_redis_data
+
+networks:
+  fitness-net:
+    name: fitness-net
+    driver: bridge
