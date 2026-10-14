@@ -4,6 +4,12 @@
 -- 设计说明见 docs/数据库设计.md
 -- ============================================================
 
+-- ⚠️ 关键一步：必须显式声明客户端字符集。
+-- 否则 mysql 客户端会按 latin1 解读这个 UTF-8 文件里的中文，
+-- 写入后就会变成「è…¿」这种乱码（腿 -> è…¿）。
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
 CREATE DATABASE IF NOT EXISTS `fitness`
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
