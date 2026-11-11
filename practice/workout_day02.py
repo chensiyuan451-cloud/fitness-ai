@@ -37,7 +37,7 @@ def max_weight(workout_sets):
         if training_set['is_warmup']:
             continue
         heaviest = max(heaviest, training_set['weight'])
-        return heaviest
+    return heaviest
 
 workout_sets = [
     {"exercise": "杠铃卧推", "weight": 20.0, "reps": 12, "is_warmup": True},
